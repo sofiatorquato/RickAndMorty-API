@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon2.png" type="image/x-icon">
+    <script type="module" src="src/main.js"></script>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Ricky and Morty</title>
+</head>
+<body>
+    <div class="header-hamburguer">
+        <div class="header-left">
+            <div class="menu-toggle">
+                <button class="menu">
+                    <img src="img/menu2.svg" alt="menu hamburguer" height="25px" width="25px">
+                </button>
+            </div>
+            <div class="header-title">
+                <img src="img/rick-and-morty-logo-001.svg" alt="" >
+            </div>
+        </div>
+    
+        <div class="header-datetime">
+            <span class="datetime">...</span>
+           
+        </div>
+        </div>
+
+        <div class="layout">
+        <aside class="sidebar-filter">
+            <section class="first-container">
+            <label class="sidebar-search">Busca</label>
+            <input type="text" class="input-section" placeholder="Busca por nome...">
+            </section>
+            
+            <section class="second-container">
+            <label class="sidebar-search">Filtros</label>
+
+
+            <select name="status" id="filter">Todos os status
+            <option value="" selected disabled>Selecione o status</option>
+            <option value="alive" class="option-status">Vivo</option>
+            <option value="dead" class="option-status">Morto</option>
+            <option value="unknown" class="option-status">Desconhecido</option>
+        </select>
+        
+        <select name="species" id="filter">
+            <option value="" selected disabled>Selecione a espécie</option>
+            <option value="Animale" class="option-status">Animal</option>
+            <option value="Human" class="option-status">Humano</option>
+            <option value="Alien" class="option-status">Alien</option>
+        </select>
+        
+        <select name="gender" id="filter">
+            <option value="" selected disabled>Selecione o gênero</option>
+            <option value="male" class="option-status">Masculino</option>
+            <option value="female" class="option-status">Feminino</option>
+            </select>
+            <button class="clear"> Limpar Filtros </button>
+      
+
+        </section>
+            
+            <section class="legend">
+                <h2>Legenda</h2>
+                <p class="legend1">Vivo</p>
+                <p class="legend2">Morto</p>
+                <p class="legend3">Desconhecido</p>
+            </section>
+        </aside>
+
+        <main class="main-content">
+            <div class="card">
+                <p>Teste</p>
+            </div>
+               
+
+        </main>
+    </div>
+</body>
+</html>
