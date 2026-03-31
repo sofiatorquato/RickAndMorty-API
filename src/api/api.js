@@ -1,13 +1,11 @@
-export async function buscarFotos(){
-    try{
-        const urlApi = await fetch('https://rickandmortyapi.com/api/character')
-        const dados = await urlApi.json();
-        return dados.results;
+export async function buscarPersonagens(filtros = {}) {
+    const UrlParams = new URLSearchParams(filtros).toString();
 
-    }
-    catch(error){
-        console.error('Erro ao capturar imagem');
-        return [];
-    }
+    const urlApi = `https://rickandmortyapi.com/api/character/?${UrlParams}`
+
+    const resposta = await fetch(urlApi);
+    const dados = await resposta.json();
+    return dados.results;
+
+
 }
-
