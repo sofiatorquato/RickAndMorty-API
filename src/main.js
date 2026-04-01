@@ -2,7 +2,9 @@ import { updateDateTime } from './utils/date.js';
 import { buscarPersonagens } from './api/api.js';
 import { renderCards } from './components/cards.js';
 import { buscarFiltros } from './components/filter.js';
+import { pesquisaNome } from './components/search.js';
 
+let filtrosGlobais={name: ""};
 const mainContent = document.querySelector(".main-content");
 
 
@@ -26,9 +28,27 @@ async function mostrarPersonagens(filtros={}) {
 
 document.addEventListener("DOMContentLoaded", () => {
     mostrarPersonagens();
-    buscarFiltros(mostrarPersonagens);
+    buscarFiltros(mostrarPersonagens, filtrosGlobais);
 })
 
+
+const pesquisa=document.querySelector('.input-section');
+
+pesquisa.addEventListener("keypress", async(e)=>{
+    if(e.key==='Enter'){
+ e.preventDefault();
+
+ const nomePesquisar= await pesquisaNome();
+ filtrosGlobais.name= nomePesquisar || "";
+
+ if(nomePesquisar){
+   await mostrarPersonagens(filtrosGlobais);
+
+ }
+    }
+   
+
+})
 
 
 

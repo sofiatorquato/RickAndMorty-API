@@ -1,21 +1,23 @@
-export function buscarFiltros(mostrarPersonagens) {
+export function buscarFiltros(mostrarPersonagens, filtroBase) {
     
     const status=document.querySelector('select[name="status"]')
     const species = document.querySelector('select[name="species"]')
     const gender = document.querySelector('select[name="gender"]')
+    const inpuNome=document.querySelector('.input-section')
     
     function aplicarFiltros() {
-        const filtros = {};
 
-        if (status.value) filtros.status = status.value;
-        if (species.value) filtros.species = species.value;
-        if (gender.value) filtros.gender = gender.value;
+        filtroBase.name=inpuNome.value;
 
-        mostrarPersonagens(filtros);
+        if (status.value) filtroBase.status = status.value;
+        else delete filtroBase.status;
+        if (species.value) filtroBase.species = species.value;
+        else delete filtroBase.species;
+        if (gender.value) filtroBase.gender = gender.value;
+        else delete filtroBase.gender;
+
+        mostrarPersonagens(filtroBase);
     }
-
-    console.log(status,species,gender)
-
 
     status.addEventListener("change", aplicarFiltros);
     species.addEventListener("change", aplicarFiltros);
