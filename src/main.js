@@ -3,6 +3,8 @@ import { buscarPersonagens } from './api/api.js';
 import { renderCards } from './components/cards.js';
 import { buscarFiltros } from './components/filter.js';
 import { pesquisaNome } from './components/search.js';
+import { limparFiltros } from './components/limparfiltros.js';
+import { pagination } from './components/paginacao.js';
 
 let filtrosGlobais={name: ""};
 const mainContent = document.querySelector(".main-content");
@@ -15,14 +17,18 @@ setInterval(updateDateTime, 1000); /*pesquisar*/
 
 async function mostrarPersonagens(filtros={}) {
     const personagens = await buscarPersonagens(filtros);
+    console.log("dados encontrados", personagens)
+    
+    // mainContent.innerHTML = "";
 
-    if (!personagens || personagens.length === 0) {
+    if (!personagens || !personagens.results ||  personagens.results.length === 0) {
         mainContent.innerHTML =`<span class="error-message">Nenhum personagem encontrado!</span>`
         console.error("Nenhum personagem encontrado!");
         return;
     }
 
-        renderCards(personagens,mainContent)
+    renderCards(personagens.results, mainContent)
+    pagination(personagens.info,filtros,mostrarPersonagens)
     
 }
 
@@ -39,9 +45,10 @@ pesquisa.addEventListener("keypress", async(e)=>{
  e.preventDefault();
 
  const nomePesquisar= await pesquisaNome();
- filtrosGlobais.name= nomePesquisar || "";
+        filtrosGlobais.name = nomePesquisar || "";
+        limparFiltros(false);
 
- if(nomePesquisar){
+    if(nomePesquisar){
    await mostrarPersonagens(filtrosGlobais);
 
  }
@@ -49,6 +56,17 @@ pesquisa.addEventListener("keypress", async(e)=>{
    
 
 })
+
+const btnLimpar = document.getElementById('btn-clear');
+btnLimpar.addEventListener("click", () => {
+    limparFiltros(true);
+
+    filtrosGlobais={name: "", page:1};
+    mostrarPersonagens(filtrosGlobais);
+
+});
+
+
 
 
 

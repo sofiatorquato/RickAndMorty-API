@@ -40,25 +40,25 @@
 
 
             <select name="status" id="status" class="filter">
-            <option value="" selected disabled>Selecione o status</option>
+            <option value="padraostatus" selected disabled hidden>Selecione o status</option>
             <option value="alive" class="option-status">Vivo</option>
             <option value="dead" class="option-status">Morto</option>
             <option value="unknown" class="option-status">Desconhecido</option>
         </select>
         
         <select name="species" id="species" class="filter">
-            <option value="" selected disabled>Selecione a espécie</option>
+            <option value="padraospecies" selected disabled>Selecione a espécie</option>
             <option value="Animal" class="option-status">Animal</option>
             <option value="Human" class="option-status">Humano</option>
             <option value="Alien" class="option-status">Alien</option>
         </select>
         
         <select name="gender" id="gender" class="filter">
-            <option value="" selected disabled>Selecione o gênero</option>
+            <option value="padraogender" selected disabled>Selecione o gênero</option>
             <option value="male" class="option-status">Masculino</option>
             <option value="female" class="option-status">Feminino</option>
             </select>
-            <button class="clear"> Limpar Filtros </button>
+            <button class="clear" id="btn-clear"> Limpar Filtros </button>
       
 
         </section>
@@ -72,12 +72,13 @@
         </aside>
 
         <main class="main-content">
-               
-            <div class="pagination">
-                <span class="page"> Mostrando x de y personagnes</span>
-            </div>
 
         </main>
+        <div class="pagination" id="container-pagination">
+            <button id="btn-anterior">Anterior</button>
+            <span id="total-pages"></span>
+            <button id="btn-prox">Próxima</button>
+        </div>
     </div>
 </body>
 </html>
