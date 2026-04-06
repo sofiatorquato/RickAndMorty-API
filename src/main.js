@@ -5,8 +5,11 @@ import { buscarFiltros } from './components/filter.js';
 import { pesquisaNome } from './components/search.js';
 import { limparFiltros } from './components/limparfiltros.js';
 import { pagination } from './components/paginacao.js';
+import { criarModal } from './components/modal.js';
 
-let filtrosGlobais={name: ""};
+
+let filtrosGlobais = { name: "" };
+let listaPersonagens = [];
 const mainContent = document.querySelector(".main-content");
 
 
@@ -17,13 +20,14 @@ setInterval(updateDateTime, 1000); /*pesquisar*/
 
 async function mostrarPersonagens(filtros={}) {
     const personagens = await buscarPersonagens(filtros);
+    listaPersonagens = personagens.results;
     console.log("dados encontrados", personagens)
     
     // mainContent.innerHTML = "";
 
     if (!personagens || !personagens.results ||  personagens.results.length === 0) {
         mainContent.innerHTML =`<span class="error-message">Nenhum personagem encontrado!</span>`
-        console.error("Nenhum personagem encontrado!");
+        console.error("Nenhum personagem encontrado!"); //VERIFICAR
         return;
     }
 
@@ -32,10 +36,22 @@ async function mostrarPersonagens(filtros={}) {
     
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
     mostrarPersonagens();
     buscarFiltros(mostrarPersonagens, filtrosGlobais);
-})
+// })
+
+mainContent.addEventListener('click', (e) => {
+    const card = e.target.closest('.card');
+    
+    if (card) {
+        const id = card.dataset.id;
+        const personagem = listaPersonagens.find(p => p.id == id);
+
+        if (personagem);
+        criarModal(personagem);
+    }
+});
 
 
 const pesquisa=document.querySelector('.input-section');
@@ -65,6 +81,7 @@ btnLimpar.addEventListener("click", () => {
     mostrarPersonagens(filtrosGlobais);
 
 });
+
 
 
 

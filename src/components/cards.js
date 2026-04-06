@@ -1,6 +1,6 @@
 export function renderCards(personagens, container) {
     container.innerHTML = personagens.map(p => `
-        <div class="card">
+        <div class="card" data-id="${p.id}">
             <img src="${p.image}" class="card-img" alt="${p.name}" loading="lazy">
             <div class="card-body">
                 <h2 class="card-title">${p.name}</h2>

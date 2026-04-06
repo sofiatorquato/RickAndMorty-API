@@ -6,7 +6,11 @@
     <link rel="shortcut icon" href="img/favicon2.png" type="image/x-icon">
     <script type="module" src="src/main.js"></script>
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/mobile.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <title>Ricky and Morty</title>
 </head>
 <body>
@@ -18,7 +22,7 @@
                 </button>
             </div>
             <div class="header-title">
-                <img src="img/rick-and-morty-logo-001.svg" alt="" >
+                <img src="img/logo (2).svg" alt="" >
             </div>
         </div>
     
@@ -39,21 +43,21 @@
             <label class="sidebar-search">Filtros</label>
 
 
-            <select name="status" id="status" class="filter">
+            <select name="status" id="status" class="filter" aria-label="Selecionar status do personagem">
             <option value="padraostatus" selected disabled hidden>Selecione o status</option>
             <option value="alive" class="option-status">Vivo</option>
             <option value="dead" class="option-status">Morto</option>
             <option value="unknown" class="option-status">Desconhecido</option>
         </select>
         
-        <select name="species" id="species" class="filter">
+        <select name="species" id="species" class="filter" aria-label="Selecionar espécie do personagem">
             <option value="padraospecies" selected disabled>Selecione a espécie</option>
             <option value="Animal" class="option-status">Animal</option>
             <option value="Human" class="option-status">Humano</option>
             <option value="Alien" class="option-status">Alien</option>
         </select>
         
-        <select name="gender" id="gender" class="filter">
+        <select name="gender" id="gender" class="filter" aria-label="Selecionar gênero do personagem">
             <option value="padraogender" selected disabled>Selecione o gênero</option>
             <option value="male" class="option-status">Masculino</option>
             <option value="female" class="option-status">Feminino</option>
@@ -69,16 +73,19 @@
                 <p class="legend2">Morto</p>
                 <p class="legend3">Desconhecido</p>
             </section>
+
+            <div class="pagination" id="container-pagination">
+                <button id="btn-anterior">Anterior</button>
+                <span id="total-pages"></span>
+                <button id="btn-prox">Próxima</button>
+                </div>
         </aside>
 
         <main class="main-content">
-
         </main>
-        <div class="pagination" id="container-pagination">
-            <button id="btn-anterior">Anterior</button>
-            <span id="total-pages"></span>
-            <button id="btn-prox">Próxima</button>
-        </div>
+
+        <dialog id="modal-criacao">
+        </dialog>
     </div>
 </body>
 </html>
