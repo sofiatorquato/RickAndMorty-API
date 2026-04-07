@@ -10,7 +10,7 @@ import { criarModal } from './components/modal.js';
 
 let filtrosGlobais = { name: "" };
 let listaPersonagens = [];
-const mainContent = document.querySelector(".main-content");
+const mainContent = document.querySelector(".grid-cards");
 
 
 updateDateTime();
@@ -38,7 +38,8 @@ async function mostrarPersonagens(filtros={}) {
 
 // document.addEventListener("DOMContentLoaded", () => {
     mostrarPersonagens();
-    buscarFiltros(mostrarPersonagens, filtrosGlobais);
+buscarFiltros(mostrarPersonagens, filtrosGlobais);
+    
 // })
 
 mainContent.addEventListener('click', (e) => {

@@ -1,11 +1,18 @@
 :root{
     --primary:#13181a;
     --secondary:#222324;
-    --terc: #76fc29;
+    --selects:rgba(124, 124, 124, 0.2);
+    --text-selects: #797979;
+    --terc: #6ddd2c;
     --button:#;
     --text: #fff;
     --textbutton: #b40000;
     --font-family1:"Audiowide";
+    --font-family2:'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
 }
 
 /*TESTES*/
@@ -34,7 +41,7 @@
 
    body {
         height: 100vh;
-        overflow: hidden; 
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         background: url('../img/teste2-fundo.jpeg') center center;
@@ -73,21 +80,25 @@
         padding-top: 15px;
     }
 
+    
 
     .sidebar-search{
         font-family: var(--font-family1);
         font-size: 1.1rem;
-        color: var(--azulrick);
+        color: var(--terc);
     }
 
     .main-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
         padding: 20px;
         align-content: start;
         overflow-y: auto; /* Scroll apenas nos cards */
         height: 100%;
+    }
+
+    .grid-cards{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
     }
 
     .menu-toggle {
@@ -121,6 +132,10 @@
         
     }
 
+    .card:hover .card-title{
+        color: var(--azulrick);
+    }
+
     
     .card-body{
         padding: 10px;
@@ -131,17 +146,24 @@
     }
 
 
-    .card-img{
-    
-    display: block;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
+        .card-img{
+        
+        display: block;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
 
-    .input-section {
-            padding: 10px;
+        .input-section {
+            padding: 12px;
             border-radius: 10px;
+            border: none;
+            color: var(--text);
+            background-color: var(--selects);
+        }
 
+        .input-section::placeholder{
+            font-family: var(--font-family2);
+            font-size: 15px;
         }
     
         .first-container {
@@ -162,40 +184,194 @@
     
         .clear {
             border: solid 1px var(--textbutton);
+            background-color: var(--background);
             color: var(--textbutton);
             padding: 10px;
             border-radius: 10px;
             margin-top: 10px;
             cursor: pointer;
+            font-size: 0.9rem;
+            transition: transform 0.5s ease-in-out;
     
         }
     
         .clear:hover {
             background-color: var(--textbutton);
-            color: var(--primary);
+            color: var(--text);
+            transform:scale(1.02) ;
         }
     
         .filter {
             padding: 0.7rem;
             border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            background-color: var(--selects);
+            color: var(--text-selects);
+        }
+
+        .filter:focus{
+            border: 1px solid var(--terc);
+            
+        }
+
+        .option-status{
+            color: var(--terc );
+            background-color: #222324;
+           
         }
     
         .legend {
             display: flex;
             flex-direction: column;
             margin: 20px;
-            gap: 10px;   }
+            gap: 10px;  
+         }
 
-        .modal-criacao{
+         
+         .legend p{
+            color: var(--text);
+            font-family:var(--font-family2)
+         }
+              
+        .legend-status{
             display: flex;
-
+            justify-content: flex-start;
+            align-items: center;
+            gap: 15px;
         }
 
-        .btn-fechar-modal{
-            justify-content: flex-end;
+        .img{
+            width: 25px;
+            height: auto;
+        }
+        /*TESTE*/
+        
+                /* Reset do Dialog */
+                #modal-criacao {
+                    border: none;
+                    padding: 0;
+                    background: transparent;
+                    border-radius: 12px;
+                }
+        
+                #modal-criacao::backdrop {
+                    background: rgba(0, 0, 0, 0.8);
+                    backdrop-filter: blur(5px);
+                }
+        
+                /* Container do Modal */
+                .modal-container {
+                    width: 90vw;
+                    max-width: 400px;
+                    background-color: #1a1c20;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    color: white;
+                    font-family: 'Inter', sans-serif;
+                    border: 1px solid #333;
+                }
+        
+                /* Header com Imagem e Degradê */
+                .modal-header {
+                    position: relative;
+                    height: 300px;
+                }
+        
+                .modal-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+        
+                .header-overlay {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 20px;
+                    background: linear-gradient(transparent, #1a1c20);
+                    /* O efeito de sumir na foto */
+                }
+        
+                /* Botão de Fechar */
+                .btn-fechar-modal {
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    border: none;
+                    background: rgba(0, 0, 0, 0.5);
+                    color: white;
+                    cursor: pointer;
+                    font-size: 20px;
+                    z-index: 10;
+                }
+        
+                /* Lista de Informações Estilo Tabela */
+                .modal-lista-info {
+                    list-style: none;
+                    padding: 10px 20px 25px;
+                    margin: 0;
+                }
+        
+                .modal-lista-info li {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 12px 0;
+                    border-bottom: 1px solid #333;
+                    font-size: 14px;
+                }
+        
+                .modal-lista-info li span {
+                    color: #888;
+                    /* Legenda mais apagada */
+                }
+        
+                .modal-lista-info li strong {
+                    color: #eee;
+                    /* Valor mais brilhante */
+                }
+        
+                /* Badge de Status */
+                .status-badge {
+                    padding: 2px 10px;
+                    border-radius: 10px;
+                    font-size: 12px;
+                    font-weight: bold;
+                    margin-right: 8px;
+                }
+        
+                .status-badge.alive {
+                    background-color: #27ae60;
+                }
+        
+                .status-badge.dead {
+                    background-color: #eb5757;
+                }
+        
+                .status-badge.unknown {
+                    background-color: #4f4f4f;
+                }
+
+       
+/*FIM DO TESTE*/
+       
+        
+       
+
+
+        .pagination{
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        margin-top: 25px;
         }
 
-
-
+        #total-pages{
+            color: var(--text);
+        }
 
 }

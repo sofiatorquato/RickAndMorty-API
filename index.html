@@ -44,21 +44,21 @@
 
 
             <select name="status" id="status" class="filter" aria-label="Selecionar status do personagem">
-            <option value="padraostatus" selected disabled hidden>Selecione o status</option>
+            <option value="padraostatus" selected disabled hidden class="option-status">Selecione o status</option>
             <option value="alive" class="option-status">Vivo</option>
             <option value="dead" class="option-status">Morto</option>
             <option value="unknown" class="option-status">Desconhecido</option>
         </select>
         
         <select name="species" id="species" class="filter" aria-label="Selecionar espécie do personagem">
-            <option value="padraospecies" selected disabled>Selecione a espécie</option>
+            <option value="padraospecies" selected hidden disabled>Selecione a espécie</option>
             <option value="Animal" class="option-status">Animal</option>
             <option value="Human" class="option-status">Humano</option>
             <option value="Alien" class="option-status">Alien</option>
         </select>
         
         <select name="gender" id="gender" class="filter" aria-label="Selecionar gênero do personagem">
-            <option value="padraogender" selected disabled>Selecione o gênero</option>
+            <option value="padraogender" selected hidden disabled>Selecione o gênero</option>
             <option value="male" class="option-status">Masculino</option>
             <option value="female" class="option-status">Feminino</option>
             </select>
@@ -68,24 +68,40 @@
         </section>
             
             <section class="legend">
-                <h2>Legenda</h2>
-                <p class="legend1">Vivo</p>
-                <p class="legend2">Morto</p>
-                <p class="legend3">Desconhecido</p>
+                <h2 class="sidebar-search">Legenda</h2>
+
+                <div class="legend-status">
+                <img src="img/icons8-gostar-32.png" alt="" class="img">
+                <p id="vivo">Vivo</p>
+                </div>
+
+                <div class="legend-status">
+                    <img src="img/icons8-caveira-e-ossos-cruzados-48.png" alt="" class="img">
+                <p id="morto">Morto</p>
+                </div>
+
+                <div class="legend-status">
+                    <img src="img/icons8-decisão-50.png" alt="" class="img">
+                <p id="desconhecido">Desconhecido</p>
+                </div>
+                
             </section>
+
+        </aside>
+
+        <main class="main-content">
+            <div class="grid-cards"></div>
 
             <div class="pagination" id="container-pagination">
                 <button id="btn-anterior">Anterior</button>
                 <span id="total-pages"></span>
-                <button id="btn-prox">Próxima</button>
-                </div>
-        </aside>
-
-        <main class="main-content">
+                <button id="btn-prox">Próxima</button>  </div>
         </main>
 
-        <dialog id="modal-criacao">
-        </dialog>
     </div>
+   
+   
+    <dialog id="modal-criacao">
+    </dialog>
 </body>
 </html>
