@@ -34,19 +34,28 @@ export function pagination(info,filtros,callback) {
     totalPaginas.innerHTML = "";
 
     limitePaginas.forEach(numberpages => {
-        const btn = document.createElement('button');
-        btn.textContent = numberpages;
+        if (numberpages === '...') {
+            const span = document.createElement('span');
+            span.textContent = '...';
+            totalPaginas.appendChild(span);
+        }
 
-        if (numberpages === paginaAtual) {
-            btn.classList.add('active')
-        }
-        else if (numberpages !== '...') {
-            btn.onclick = () => {
-                filtros.page = numberpages;
-                callback(filtros);
+        else {
+            const btn = document.createElement('button');
+            btn.textContent = numberpages;
+
+            if (numberpages === paginaAtual) {
+                btn.classList.add('active')
             }
+            else if (numberpages !== '...') {
+                btn.onclick = () => {
+                    filtros.page = numberpages;
+                    callback(filtros);
+                }
+            }
+            totalPaginas.appendChild(btn);
         }
-        totalPaginas.appendChild(btn);
+        
     });
     
     anterior.disabled = !info.prev;

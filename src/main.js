@@ -11,6 +11,7 @@ import { criarModal } from './components/modal.js';
 let filtrosGlobais = { name: "" };
 let listaPersonagens = [];
 const mainContent = document.querySelector(".grid-cards");
+const paginacao = document.getElementById('container-pagination');
 
 
 updateDateTime();
@@ -18,29 +19,38 @@ setInterval(updateDateTime, 1000); /*pesquisar*/
 
 
 
-async function mostrarPersonagens(filtros={}) {
-    const personagens = await buscarPersonagens(filtros);
-    listaPersonagens = personagens.results;
-    console.log("dados encontrados", personagens)
-    
+async function mostrarPersonagens(filtros = {}) {
+    paginacao.style.display = 'none';
     // mainContent.innerHTML = "";
+    mainContent.innerHTML = `<div class="loading-container"><img src="img/loading.png" alt="nave do rick and morty" class="nave">
+    <p class="message">Viajando entre dimensões...</p>`
 
-    if (!personagens || !personagens.results ||  personagens.results.length === 0) {
-        mainContent.innerHTML =`<span class="error-message">Nenhum personagem encontrado!</span>`
+    const personagens = await buscarPersonagens(filtros);
+    
+    await new Promise(resolve => setTimeout(resolve, 1000)); //estudar
+
+    mainContent.innerHTML = "";
+
+    if (!personagens || !personagens.results || personagens.results.length === 0) {
+        mainContent.innerHTML = `<div class="message-error"><img src="img/error.png" alt="rick e morty fugindo por um portal"><span class="error-message">Wubba Lubba Dub Dub! O servidor caiu em outra dimensão.</span></div>`
+        
         console.error("Nenhum personagem encontrado!"); //VERIFICAR
+        listaPersonagens = [];
         return;
     }
 
+    listaPersonagens = personagens.results;
+
+    paginacao.style.display = 'flex';
     renderCards(personagens.results, mainContent)
-    pagination(personagens.info,filtros,mostrarPersonagens)
+    pagination(personagens.info,filtros,mostrarPersonagens);
     
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
+
     mostrarPersonagens();
 buscarFiltros(mostrarPersonagens, filtrosGlobais);
     
-// })
 
 mainContent.addEventListener('click', (e) => {
     const card = e.target.closest('.card');
@@ -53,6 +63,7 @@ mainContent.addEventListener('click', (e) => {
         criarModal(personagem);
     }
 });
+
 
 
 const pesquisa=document.querySelector('.input-section');

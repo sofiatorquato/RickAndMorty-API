@@ -25,6 +25,7 @@ export function criarModal(p) {
     </ul>
 </section>
 `;
+//FIM
     
     if (p.episode.length > 1) {
         const eps = document.querySelector('.eps-personagem');
