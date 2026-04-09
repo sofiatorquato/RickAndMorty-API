@@ -4,7 +4,7 @@ export function pagination(info,filtros,callback) {
     const proxima = document.getElementById('btn-prox');
     const totalPaginas = document.getElementById('total-pages')
     const limitePaginas = [];
-    const raio = 1;
+    const raio = 1; //numeros visiveis
     
     if (!info || !filtros) return;
 

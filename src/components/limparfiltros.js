@@ -1,4 +1,4 @@
-export function limparFiltros(limparNome=true) {
+export function limparFiltros(limparNome) {
     const status = document.querySelector('select[name="status"]')
     const species = document.querySelector('select[name="species"]')
     const gender = document.querySelector('select[name="gender"]')
@@ -12,6 +12,5 @@ export function limparFiltros(limparNome=true) {
     species.value = "padraospecies";
     gender.value = "padraogender";
 
-   
 }
 

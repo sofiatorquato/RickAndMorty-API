@@ -1,6 +1,5 @@
 const modalPersonagem = document.getElementById('modal-criacao');
 
-//TESTE
 export function criarModal(p) {
     modalPersonagem.innerHTML = `  
     <section class="modal-container">
@@ -21,16 +20,11 @@ export function criarModal(p) {
         <li><span>Última localização</span> <strong>${p.location.name}</strong></li>
         <li><span>Espécie</span> <strong>${p.species}</strong></li>
         <li><span>Gênero</span> <strong>${p.gender}</strong></li>
-        <li><span class="eps-personagem">Episódios</span> <strong>${p.episode.length} episódios</strong></li>
+        <li><span class="eps-personagem">Aparece em</span> <strong>${p.episode.length} episódios</strong></li>
     </ul>
 </section>
 `;
-//FIM
-    
-    if (p.episode.length > 1) {
-        const eps = document.querySelector('.eps-personagem');
-        eps.textContent=`Aparece em`
-    }
+
     
     modalPersonagem.showModal();
 

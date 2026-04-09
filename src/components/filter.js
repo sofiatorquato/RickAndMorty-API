@@ -9,17 +9,20 @@ export function buscarFiltros(mostrarPersonagens, filtroBase) {
 
         filtroBase.name=inputNome.value;
 
-        if (status.value && status.value !=="padraostatus") filtroBase.status = status.value;
+        if (status.value && status.value !== "padraostatus")  filtroBase.status = status.value; 
+            
         else delete filtroBase.status;
+        
         if (species.value && species.value !== "padraospecies") filtroBase.species = species.value;
-        else delete filtroBase.species;
+            
+        else delete filtroBase.species; 
+
         if (gender.value && gender.value !== "padraogender") filtroBase.gender = gender.value;
+            
         else delete filtroBase.gender;
 
         mostrarPersonagens(filtroBase);
     }
-
-    console.log("Filtro alterado: ", filtroBase)
     
     status.addEventListener("change", aplicarFiltros);
     species.addEventListener("change", aplicarFiltros);

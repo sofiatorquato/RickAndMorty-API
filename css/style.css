@@ -7,6 +7,11 @@
     --button:#;
     --text: #fff;
     --textbutton: #b40000;
+    --verdeportal: #97ce4c;
+    --azulrick: #00b0c7;
+    --amarelo-morty: #f0e144;
+    --background: rgba(32, 35, 41, 0.9);
+    --borda-neon: rgba(151, 206, 76, 0.5);
     --font-family1:"Audiowide";
     --font-family2:'Gill Sans',
         'Gill Sans MT',
@@ -15,31 +20,13 @@
         sans-serif;
 }
 
-/*TESTES*/
-:root{
-    --verdeportal:#97ce4c;
-    --azulrick: #00b0c7;
-    --amarelo-morty:#f0e144;
-    --background:rgba(32, 35, 41, 0.9);
-    --borda-neon:rgba(151, 206, 76, 0.5);
-}
-
-*{
-    box-sizing: border-box;
-
-}
-
-/*ESTILIZAÇÃO HEADER - DESKTOP*/
-
-@media (min-width: 768px) {
-
-    h1,h2,.titulo-nome-personagem{
+h1,h2,.titulo-nome-personagem{
         font-family: var(--font-family1);
         font-weight: 500;
         letter-spacing: 2px;
     }
 
-   body {
+body {
         height: 100vh;
         overflow: hidden;
         display: flex;
@@ -47,15 +34,16 @@
         background: url('../img/teste2-fundo.jpeg') center center;
     }
 
-    /* O Header fica fixo no topo pelo flex do body */
     .header-hamburguer {
         height: auto; 
         padding: 10px 20px;
         display: flex;
         min-height: 120px;
         border-bottom: 1px solid var(--borda-neon);
-        
-        /* flex-shrink: 0; */
+        max-width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--primary);
     }
 
     .datetime{
@@ -138,12 +126,13 @@
     }
     
     .card-title{
-        text-overflow: ellipsis;
+       
         white-space: nowrap;
         display: block;
         width: 100%;
         overflow: hidden;
         text-align: center;
+        text-overflow: ellipsis;
     }
     
 
@@ -154,7 +143,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
         overflow: hidden;
     }
 
@@ -221,6 +209,7 @@
             cursor: pointer;
             background-color: var(--selects);
             color: var(--text-selects);
+            outline: none;
         }
 
         .filter:focus{
@@ -258,14 +247,14 @@
             width: 25px;
             height: auto;
         }
-        /*TESTE*/
+
         
         
-                #modal-criacao::backdrop {
-                    background: rgba(0, 0, 0, 0.8);
-                    -webkit-backdrop-filter: blur(5px);
-                    backdrop-filter: blur(5px); 
-                }
+        #modal-criacao::backdrop {
+            background: rgba(0, 0, 0, 0.8);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px); 
+             }
         
                 /* Container do Modal */
                 .modal-container {
@@ -279,7 +268,7 @@
                     border: 1px solid #333;
                 }
         
-                /* Header com Imagem e Degradê */
+                /* Header com IMG*/
                 .modal-header {
                     position: relative;
                     height: 300px;
@@ -298,16 +287,15 @@
                     right: 0;
                     gap:10px;
                     padding: 20px;
-                    background: linear-gradient(transparent, #1a1c20);
-                    /* O efeito de sumir na foto */
-                }
+                background: linear-gradient(transparent, #1a1c20);
+
+    }
 
                 .modal-titulo{
                     margin-bottom: 10px;
                     font-size: 1.5rem;
                 }
         
-                /* Botão de Fechar */
                 .btn-fechar-modal {
                     position: absolute;
                     top: 15px;
@@ -323,7 +311,6 @@
                     z-index: 10;
                 }
         
-                /* Lista de Informações Estilo Tabela */
                 .modal-lista-info {
                     list-style: none;
                     padding: 10px 20px 25px;
@@ -340,16 +327,14 @@
         
                 .modal-lista-info li span {
                     color: #888;
-                    /* Legenda mais apagada */
+                
                 }
         
                 .modal-lista-info li strong {
                     color: #eee;
                     text-overflow: ellipsis;
-                    /* Valor mais brilhante */
                 }
         
-                /* Badge de Status */
                 .status-badge {
                     padding: 2px 10px;
                     border-radius: 10px;
@@ -369,11 +354,7 @@
                 .status-badge.unknown {
                     background-color: #4f4f4f;
                 }
-
        
-/*FIM DO TESTE*/
-       
-        
        
         .loading-container{
             display: flex;
@@ -431,19 +412,16 @@
         }
 
 
-        /*TESTE-PAGINACAO*/
-
-        /* Container principal da paginação */
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin: 40px 0;
-    padding-bottom: 20px;
+    margin: 20px 0;
+    
 }
 
-/* Estilo base para todos os botões de página (Anterior, Próxima e Números) */
+
 .pag-botoes, #total-pages button {
     background-color: var(--background);
     border: 1px solid var(--verdeportal);
@@ -456,16 +434,13 @@
     min-width: 40px;
 }
 
-/* Efeito Hover */
-.pag-botoes:hover:not(:disabled), 
+
 #total-pages button:hover:not(.active) {
     background-color: var(--verdeportal);
     color: var(--primary);
     box-shadow: 0 0 10px var(--verdeportal);
 }
 
-
-/* Estilo para a página ATUAL */
 #total-pages .active {
     background-color: var(--azulrick);
     border-color: var(--azulrick);
@@ -475,23 +450,121 @@
     cursor: default;
 }
 
-/* Estilo para as reticências (...) */
-#total-pages span {
-    color: var(--text);
-    padding: 0 5px;
-}
-
-/* Quando os botões Anterior/Próxima estão desativados */
 .pag-botoes:disabled {
     opacity: 0.3;
     cursor: not-allowed;
     border-color: #555;
 }
 
-/* Remove estilos extras que podem vir do span */
+
 #total-pages {
     display: flex;
     gap: 8px;
     align-items: center;
 }
+
+.icon-status {
+    width: 20px;
+    height: 20px;
+}
+
+.species{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+@media (max-width: 768px) {
+    .header-hamburguer {
+        height: auto;
+        padding: 10px;
+        min-height: 80px;
+        padding: 5px 15px;
+    }
+
+
+    .header-left{
+        display: flex;
+        gap: 15px;
+    }
+
+    .header-title img{
+        width: 150px;
+        margin-left: 0;
+
+    }
+
+    .menu-toggle {
+        display: flex;
+        z-index: 2000;
+    }
+
+    .menu{
+        background-color:var(--primary);
+        border: none;
+
+    }
+
+    .layout{
+        display: flex;
+        height: 100%;
+       
+    }
+
+    .message-error{
+        display: flex;
+    }
+
+    .message-error img{
+        height: 200px;
+    }
+
+    .error-message{
+        text-align: center;
+    }
+
+    .loading-container{
+        display: flex;
+    }
+
+    .loading-container img{
+        height: 200px;
+    }
+
+    .message{
+        text-align: center;
+    }
+
+    .sidebar-filter {
+        display: none;
+    }
+
+    .sidebar-filter.active {
+        display: flex;
+        left: 0;
+    }
+
+    .modal-container{
+        width: 100%; 
+        box-sizing: border-box;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+        gap: 5px;
+        padding-bottom: 10px;
+    }
+
+    #total-pages{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .strong{
+        white-space: nowrap;
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-overflow: ellipsis;
+    }
 }

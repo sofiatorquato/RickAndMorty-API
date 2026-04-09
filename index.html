@@ -6,19 +6,18 @@
     <link rel="shortcut icon" href="img/favicon2.png" type="image/x-icon">
     <script type="module" src="src/main.js"></script>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/mobile.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-    <title>Ricky and Morty</title>
+    <title>Rick and Morty</title>
 </head>
 <body>
     <div class="header-hamburguer">
         <div class="header-left">
             <div class="menu-toggle">
                 <button class="menu">
-                    <img src="img/menu2.svg" alt="menu hamburguer" height="25px" width="25px">
+                    <img src="img/menu-mobile.svg" alt="menu hamburguer" height="25px" width="25px">
                 </button>
             </div>
             <div class="header-title">
@@ -27,7 +26,7 @@
         </div>
     
         <div class="header-datetime">
-            <span class="datetime">...</span>
+            <span class="datetime"></span>
            
         </div>
         </div>
@@ -45,6 +44,7 @@
 
             <select name="status" id="status" class="filter" aria-label="Selecionar status do personagem">
             <option value="padraostatus" selected disabled hidden class="option-status">Selecione o status</option>
+            <option value="" class="option-status">Todas os status</option>
             <option value="alive" class="option-status">Vivo</option>
             <option value="dead" class="option-status">Morto</option>
             <option value="unknown" class="option-status">Desconhecido</option>
@@ -52,13 +52,19 @@
         
         <select name="species" id="species" class="filter" aria-label="Selecionar espécie do personagem">
             <option value="padraospecies" selected hidden disabled>Selecione a espécie</option>
+            <option value="" class="option-status">Todas as espécies</option>
             <option value="Animal" class="option-status">Animal</option>
             <option value="Human" class="option-status">Humano</option>
             <option value="Alien" class="option-status">Alien</option>
+            <option value="Robot" class="option-status">Robô</option>
+            <option value="Mythological Creature" class="option-status">Criatura Mitológica</option>
+            <option value="Poopybutthole" class="option-status">Poopybutthole</option>
+            <option value="Cronenberg" class="option-status">Cronenberg</option>
         </select>
         
         <select name="gender" id="gender" class="filter" aria-label="Selecionar gênero do personagem">
             <option value="padraogender" selected hidden disabled>Selecione o gênero</option>
+            <option value="" class="option-status">Todos os generos</option>
             <option value="male" class="option-status">Masculino</option>
             <option value="female" class="option-status">Feminino</option>
             </select>
@@ -71,23 +77,24 @@
                 <h2 class="sidebar-search">Legenda</h2>
 
                 <div class="legend-status">
-                <img src="img/icons8-gostar-32.png" alt="" class="img">
+                <img src="img/alive.png" alt="" class="img">
                 <p id="vivo">Vivo</p>
                 </div>
 
                 <div class="legend-status">
-                    <img src="img/icons8-caveira-e-ossos-cruzados-48.png" alt="" class="img">
+                    <img src="img/dead.png" alt="" class="img">
                 <p id="morto">Morto</p>
                 </div>
 
                 <div class="legend-status">
-                    <img src="img/icons8-decisão-50.png" alt="" class="img">
+                    <img src="img/unknown.png" alt="" class="img">
                 <p id="desconhecido">Desconhecido</p>
                 </div>
                 
             </section>
 
         </aside>
+        
         
 
         <main class="main-content">

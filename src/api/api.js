@@ -1,5 +1,5 @@
 export async function buscarPersonagens(filtros = {}) {
-    const UrlParams = new URLSearchParams(filtros).toString(); //transformar um objeto em string
+    const UrlParams = new URLSearchParams(filtros).toString(); 
 
     const urlApi = `https://rickandmortyapi.com/api/character/?${UrlParams}`
 
@@ -7,10 +7,11 @@ export async function buscarPersonagens(filtros = {}) {
         const resposta = await fetch(urlApi);
 
         if (!resposta.ok) {
-            throw new Error ("Erro na conexão com a API")
+            throw new Error("Erro na requisição");
         }
+
         const dados = await resposta.json();
-        return dados;   
+        return dados;  
     }
 
     catch (error) {
